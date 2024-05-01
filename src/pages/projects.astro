@@ -7,8 +7,9 @@ import { Icon } from "astro-icon/components";
 const projectsList = [
   {
     previewImageUrl: [
-      "https://res.cloudinary.com/dxgsqxdi3/image/upload/f_auto,q_auto/crnwlj8bnshj2untqr2u",
-      "https://res.cloudinary.com/dxgsqxdi3/image/upload/f_auto,q_auto/crnwlj8bnshj2untqr2u",
+      "https://fakeimg.pl/400x400",
+      "https://fakeimg.pl/400x400",
+      "https://fakeimg.pl/400x400",
     ],
     title: "PakeNanya.com",
     description:
@@ -19,8 +20,9 @@ const projectsList = [
   },
   {
     previewImageUrl: [
-      "https://res.cloudinary.com/dxgsqxdi3/image/upload/f_auto,q_auto/hvtpez5zz9obmmiob5pr",
-      "https://res.cloudinary.com/dxgsqxdi3/image/upload/f_auto,q_auto/hvtpez5zz9obmmiob5pr",
+      "https://fakeimg.pl/600x400",
+      "https://fakeimg.pl/600x400",
+      "https://fakeimg.pl/600x400",
     ],
     title: "Weladalah.com",
     description:
@@ -49,14 +51,20 @@ const projectsList = [
             <div class="w-full border-0  md:border border-neutral-500  md:rounded-xl p-8  flex flex-col gap-8">
               <h1 class="text-2xl font-bold">{project.title}</h1>
               <p class="text-neutral-300 pr-8">{project.description}</p>
-              <div class="w-full flex gap-4 overflow-x-scroll ">
+              <div class="w-full flex gap-4 overflow-x-scroll snap-mandatory snap-x">
                 {project.previewImageUrl.map((imageUrl) => (
                   <Image
                     alt={project.title}
                     src={imageUrl}
                     width={300}
                     height={300}
-                    class:list={["rounded-md", "max-w-lg", "w-full"]}
+                    class:list={[
+                      "rounded-md",
+                      "max-w-lg",
+                      "w-full",
+                      "snap-start",
+                    ]}
+                    loading="eager"
                   />
                 ))}
               </div>
@@ -74,7 +82,7 @@ const projectsList = [
                   <Icon
                     name="mdi:link-variant"
                     size={32}
-                    class="text-neutral-300 hover:text-green-500 p-1 border border-neutral-500 shadow-md shadow-neutral-700 rounded-md"
+                    class="text-neutral-300 hover:text-black hover:bg-white p-1 border border-neutral-500 shadow-md shadow-neutral-700 rounded-md transition-all duration-300 ease-out"
                   />
                 </div>
 

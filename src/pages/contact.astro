@@ -47,10 +47,19 @@ const contactList = [
           contactList.map((contact) => (
             <a
               href={contact.link}
-              class="p-2 inline-flex items-center border border-neutral-500 rounded-lg gap-1 w-full hover:bg-white hover:text-black transition-all duration-300 ease-out"
+              class="p-4 inline-flex flex-col group  border border-neutral-500 rounded-lg gap-2 w-full hover:bg-white hover:text-black transition-all duration-300 ease-out"
             >
-              <Icon name={contact.icon} size={32} />
-              <p>{contact.name}</p>
+              <div class="flex justify-between items-center">
+                <Icon name={contact.icon} size={32} />
+                <Icon
+                  name="mdi:arrow-top-right"
+                  size={32}
+                  class="p-1 rounded-md border border-neutral-500 group-hover:bg-black group-hover:text-white shadow-md shadow-neutral-700"
+                />
+              </div>
+              <p class="text-2xl md:text-3xl font-medium underline decoration-wavy decoration-sky-500 group-hover:decoration-black ">
+                {contact.name}
+              </p>
             </a>
           ))
         }
