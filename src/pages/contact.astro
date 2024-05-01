@@ -1,0 +1,60 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Icon } from "astro-icon/components";
+
+const contactList = [
+  {
+    name: "Email",
+    icon: "mdi:email",
+    link: "mailto:example@gmail.com",
+  },
+  {
+    name: "Github",
+    icon: "mdi:github",
+    link: "https://github.com/example",
+  },
+  {
+    name: "LinkedIn",
+    icon: "mdi:linkedin",
+    link: "https://www.linkedin.com/in/example/",
+  },
+  {
+    name: "Twitter",
+    icon: "mdi:twitter",
+    link: "https://twitter.com/example",
+  },
+];
+---
+
+<Layout title="Contact">
+  <main class="flex justify-center items-center flex-col text-white px-4">
+    <h1 class="text-3xl font-bold mt-12">Lets get in touch</h1>
+
+    <div
+      class="flex gap-4 flex-col justify-center items-center w-full mt-24 mb-32"
+    >
+      <div class="self-start">
+        <h1 class="text-xl font-medium">Have any project ideas?</h1>
+        <h1 class="text-xl font-medium">Ask something?</h1>
+      </div>
+
+      <p class="self-start">Contact me via</p>
+
+      <div
+        class="flex flex-col md:grid md:grid-cols-2 items-start justify-center gap-4 w-full"
+      >
+        {
+          contactList.map((contact) => (
+            <a
+              href={contact.link}
+              class="p-2 inline-flex items-center border border-neutral-500 rounded-lg gap-1 w-full hover:bg-white hover:text-black transition-all duration-300 ease-out"
+            >
+              <Icon name={contact.icon} size={32} />
+              <p>{contact.name}</p>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </main>
+</Layout>

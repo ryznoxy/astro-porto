@@ -1,0 +1,113 @@
+---
+import { Image } from "astro:assets";
+import Card from "../components/Card.astro";
+import Layout from "../layouts/Layout.astro";
+import { Icon } from "astro-icon/components";
+
+const projectsList = [
+  {
+    previewImageUrl: [
+      "https://res.cloudinary.com/dxgsqxdi3/image/upload/f_auto,q_auto/crnwlj8bnshj2untqr2u",
+      "https://res.cloudinary.com/dxgsqxdi3/image/upload/f_auto,q_auto/crnwlj8bnshj2untqr2u",
+    ],
+    title: "PakeNanya.com",
+    description:
+      "PakeNanya.com is an innovative platform dedicated to providing solutions to all your questions. From technology queries to delicious cooking tips, PakeNanya.com is here to offer the answers you need. Covering a wide range of topics including lifestyle, technology, health, and more, we provide accurate and reliable information to help you address every question that crosses your mind. No more hesitation, start exploring and find the answers to every 'PakeNanya' you have at PakeNanya.com!",
+    techStack: ["React", "Astro", "Tailwind"],
+    repoLink: "https://example.com/project1",
+    link: "https://example.com/project1",
+  },
+  {
+    previewImageUrl: [
+      "https://res.cloudinary.com/dxgsqxdi3/image/upload/f_auto,q_auto/hvtpez5zz9obmmiob5pr",
+      "https://res.cloudinary.com/dxgsqxdi3/image/upload/f_auto,q_auto/hvtpez5zz9obmmiob5pr",
+    ],
+    title: "Weladalah.com",
+    description:
+      "Welcome to Weladalah.com, your go-to platform for all things insightful and informative. Whether you're seeking advice on personal finance, exploring the latest trends in fashion, or discovering tips for a healthier lifestyle, Weladalah.com is your trusted companion. With a diverse array of topics spanning finance, fashion, wellness, and more, we strive to deliver accurate and up-to-date content to address every query you may have. Don't hesitate any longer - embark on a journey of discovery and empowerment with Weladalah.com!",
+    techStack: ["React", "Astro", "Tailwind"],
+    repoLink: "https://example.com/project2",
+    link: "https://example.com/project2",
+  },
+];
+---
+
+<Layout title="Projects">
+  <main class="flex justify-center items-center flex-col text-white">
+    <h1 class="text-3xl font-bold mt-12">My Latest Project</h1>
+    <p class="text-neutral-300">There are my latest projects</p>
+
+    <div
+      class="flex gap-4 flex-col justify-center items-center w-full mt-24 mb-32"
+    >
+      {
+        projectsList.map((project, i) => (
+          <>
+            <span
+              class={`bg-gradient-to-r from-${i % 2 === 0 ? "blue" : "green"}-500 from-60%  block w-72 h-px -mb-4 self-start md:hidden`}
+            />
+            <div class="w-full border-0  md:border border-neutral-500  md:rounded-xl p-8  flex flex-col gap-8">
+              <h1 class="text-2xl font-bold">{project.title}</h1>
+              <p class="text-neutral-300 pr-8">{project.description}</p>
+              <div class="w-full flex gap-4 overflow-x-scroll ">
+                {project.previewImageUrl.map((imageUrl) => (
+                  <Image
+                    alt={project.title}
+                    src={imageUrl}
+                    width={300}
+                    height={300}
+                    class:list={["rounded-md", "max-w-lg", "w-full"]}
+                  />
+                ))}
+              </div>
+
+              <a
+                href={project.link}
+                class="p-4 rounded-xl border border-neutral-500 w-full md:max-w-xs flex flex-col gap-2 bg-neutral-800/90"
+              >
+                <div class="flex justify-between items-center">
+                  <h1 class="text-lg font-medium inline-flex items-center">
+                    <span class="animate-ping mr-2 w-2 h-2 rounded-full block bg-green-500" />
+                    <span class="-ml-4 mr-2 w-2 h-2 rounded-full block bg-green-500" />
+                    Live in production
+                  </h1>
+                  <Icon
+                    name="mdi:link-variant"
+                    size={32}
+                    class="text-neutral-300 hover:text-green-500 p-1 border border-neutral-500 shadow-md shadow-neutral-700 rounded-md"
+                  />
+                </div>
+
+                <h1 class="text-2xl md:text-3xl font-semibold">
+                  {project.title}
+                </h1>
+              </a>
+
+              <a
+                href={project.repoLink}
+                class="p-2 inline-flex items-start flex-col w-fit"
+              >
+                Available on
+                <h1 class="text-2xl font-medium inline-flex items-center">
+                  <Icon name="mdi:github" size={24} class="mr-2" />
+                  github.com
+                </h1>
+              </a>
+
+              <div class="flex flex-col gap-2">
+                <h1>Featured technologies used</h1>
+                <div class="flex gap-2">
+                  {project.techStack.map((tech) => (
+                    <p class="px-2 py-1 border border-neutral-500 rounded-[5px]">
+                      {tech}
+                    </p>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </>
+        ))
+      }
+    </div>
+  </main>
+</Layout>

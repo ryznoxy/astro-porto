@@ -1,0 +1,130 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../layouts/Layout.astro";
+
+const educationsList = [
+  {
+    title: "Vocational High School 5 Surakarta",
+    description: "Software and Game Development",
+    date: "2015 - 2019",
+  },
+  {
+    title: "University of Indonesia",
+    description: "Bachelor of Computer Science",
+    date: "2020 - Present",
+  },
+];
+
+const experiencesList = [
+  {
+    logoImage:
+      "https://i.ibb.co/TLPFcRr/Black-White-Elegant-Monogram-Initial-Name-Logo.png",
+    company: "ABC Corp",
+    period: "January 2020 - March 2022",
+    position: "Frontend Developer",
+    jobType: "Full-time Employee, On-site",
+    description:
+      "Responsible for frontend development of web applications using XYZ technology. Collaborated with design and development teams to produce high-quality products.",
+  },
+  {
+    logoImage:
+      "https://i.ibb.co/TLPFcRr/Black-White-Elegant-Monogram-Initial-Name-Logo.png",
+    company: "DEF Corp",
+    period: "March 2022 - Present",
+    position: "Frontend Developer",
+    jobType: "Freelance, Remote",
+    description:
+      "Responsible for frontend development of web applications using XYZ technology. Collaborated with design and development teams to produce high-quality products.",
+  },
+];
+---
+
+<Layout title="Home">
+  <main class="flex justify-center items-center flex-col text-white">
+    <h1 class="text-xl font-bold text-center mt-24 px-4">
+      <span class="text-3xl md:text-5xl">Hi 👋, I'm Reza! </span><br />Frontend
+      Developer from Surakarta, Indonesia 🇮🇩
+    </h1>
+
+    <div class="mt-24">
+      <div class="flex gap-4 flex-col px-4">
+        <h1 class="text-xl font-bold">About Me</h1>
+        <div class="flex flex-col gap-2 font-normal">
+          <p>
+            Hello! I'm Reza Adi Nugroho, a Junior Frontend Developer. Although
+            I'm currently a 10th grader in vocational high school, I have a
+            strong passion for web and web development. I am currently focusing
+            on learning and developing my skills in Frontend Development.
+          </p>
+          <p>
+            In vocational high school, I chose the Software and Game Development
+            major. This major has given me a strong foundation in programming
+            and web development. I am also actively involved in various online
+            communities and training to deepen my knowledge and expertise.
+          </p>
+          <p>
+            Even though I am still in the learning process, I have some
+            experience building simple websites. I am excited to contribute to
+            building this website and I am enthusiastic about continuing to
+            learn and grow in the field of Frontend Development.
+          </p>
+        </div>
+      </div>
+      <div class="flex gap-4 flex-col mt-12 px-4">
+        <h1 class="text-xl font-bold">Education</h1>
+        <div class="flex flex-wrap gap-4">
+          {
+            educationsList.map((education) => (
+              <div class="border border-neutral-500  p-4 rounded-xl space-y-2 w-full md:w-fit">
+                <h1 class="text-xl font-semibold">{education.title}</h1>
+                <p class="text-sm">{education.description}</p>
+                <p class="text-sm">{education.date}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+      <div class="flex gap-4 flex-col mt-12 mb-24">
+        <h1 class="text-xl font-bold px-4">Experience</h1>
+        <div class="flex flex-wrap gap-4">
+          {
+            experiencesList.map((experience, i) => (
+              <>
+                <div class="md:border border-0  border-neutral-500  p-8 md:rounded-xl space-y-6 w-full">
+                  <div class="flex md:flex-row flex-col justify-between md:items-center items-start">
+                    <div class="flex gap-4 items-center">
+                      <Image
+                        alt={experience.company}
+                        title={experience.company}
+                        src={experience.logoImage}
+                        width={100}
+                        height={100}
+                        class:list={["rounded-full", "w-16", "h-16"]}
+                        loading="lazy"
+                      />
+                      <h1 class="text-2xl font-semibold">
+                        {experience.company}
+                      </h1>
+                    </div>
+                    <p class="text-lg rounded-xl border border-neutral-500   p-2 mt-4 md:mt-0">
+                      {experience.position}
+                    </p>
+                  </div>
+
+                  <p class="font-semibold text-xl">{experience.jobType}</p>
+                  <p class="font-medium text-lg ">{experience.period}</p>
+                  <p class="text-lg text-neutral-300 max-w-2xl">
+                    {experience.description}
+                  </p>
+                </div>
+                <span
+                  class={`bg-gradient-to-r from-${i % 2 === 0 ? "blue" : "green"}-500 from-60%  block w-72 h-px md:hidden  `}
+                />
+              </>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
