@@ -42,8 +42,9 @@ const experiencesList = [
 <Layout title="Home">
   <main class="flex justify-center items-center flex-col text-white">
     <h1 class="text-xl font-bold text-center mt-24 px-4">
-      <span class="text-3xl md:text-5xl">Hi 👋, I'm Reza! </span><br />Frontend
-      Developer from Surakarta, Indonesia 🇮🇩
+      <span class="text-3xl md:text-5xl inline-flex"
+        >Hi <div class="animate-shake">👋</div>, I'm Reza!
+      </span><br />Frontend Developer from Surakarta, Indonesia 🇮🇩
     </h1>
 
     <div class="mt-24">
@@ -86,7 +87,7 @@ const experiencesList = [
       </div>
       <div class="flex gap-4 flex-col mt-12 mb-24">
         <h1 class="text-xl font-bold px-4">Experience</h1>
-        <div class="flex flex-wrap gap-4">
+        <div class="flex flex-wrap gap-4 md:px-4">
           {
             experiencesList.map((experience, i) => (
               <>
@@ -118,7 +119,7 @@ const experiencesList = [
                   </p>
                 </div>
                 <span
-                  class={`bg-gradient-to-r from-${i % 2 === 0 ? "blue" : "green"}-500 from-60%  block w-72 h-px md:hidden  `}
+                  class={`bg-gradient-to-r from-white from-60%  block w-72 h-px md:hidden`}
                 />
               </>
             ))
